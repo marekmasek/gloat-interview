@@ -4,7 +4,7 @@ from pathlib import Path
 
 from exceptions.exceptions import TestDataConfigurationException
 
-CONFIG_PATH = "data/env/{}.json"
+CONFIG_PATH = "data/environment/{}.json"
 
 
 class TestData:

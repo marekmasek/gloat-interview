@@ -1,0 +1,6 @@
+{
+  "apiBaseUrl": "http://api.openweathermap.org",
+  "apiKey": null,
+  "baseUrl": "https://www.metric-conversions.org",
+  "seleniumTimeout": 30
+}
