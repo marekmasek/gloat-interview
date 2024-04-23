@@ -34,7 +34,11 @@ node_modules/
 
 # IDE temporary files and folders
 .idea/
+*.iml
 .vscode/
+
+# OS files and folders
+.DS_Store
 
 # Test artifacts
 screenshots/
