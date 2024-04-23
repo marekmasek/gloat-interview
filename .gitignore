@@ -5,9 +5,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.pyc
-*.pyo
-*.pyd
 *.pytest_cache/
 *.coverage
 .coverage
@@ -41,4 +38,4 @@ node_modules/
 
 # Test artifacts
 screenshots/
-allure-reports/
+allure-results/
