@@ -9,10 +9,10 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
-from config.selenium_config import SeleniumConfig
-from config.test_data import TestData
-from exceptions.exceptions import ElementShould
-from utils.url_utils import UrlUtils
+from src.config.selenium_config import SeleniumConfig
+from src.config.test_data import TestData
+from src.exceptions.exceptions import ElementShould
+from src.utils.url_utils import UrlUtils
 
 
 class BasePage:

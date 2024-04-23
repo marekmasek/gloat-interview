@@ -4,8 +4,8 @@ from pathlib import Path
 import allure
 import pytest
 
-from config.test_data import TestData
-from pages.base_page import BasePage
+from src.config.test_data import TestData
+from src.pages.base_page import BasePage
 
 
 def pytest_addoption(parser):

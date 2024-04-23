@@ -5,8 +5,8 @@ from typing import Type, TypeVar
 import requests
 from pydantic import BaseModel
 
-from config.test_data import TestData
-from utils.url_utils import UrlUtils
+from src.config.test_data import TestData
+from src.utils.url_utils import UrlUtils
 
 
 class HttpMethod(Enum):

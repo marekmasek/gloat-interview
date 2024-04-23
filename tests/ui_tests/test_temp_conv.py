@@ -1,7 +1,7 @@
 import allure
 
-from enums.conversions import Temperature
-from pages.temp_conv_page import TempConvPage
+from src.enums.conversions import Temperature
+from src.pages.temp_conv_page import TempConvPage
 from tests.ui_tests.test_base_ui import TestBaseUi
 
 

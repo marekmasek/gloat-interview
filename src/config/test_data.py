@@ -2,7 +2,7 @@ import json
 from json import JSONDecodeError
 from pathlib import Path
 
-from exceptions.exceptions import TestDataConfigurationException
+from src.exceptions.exceptions import TestDataConfigurationException
 
 CONFIG_PATH = "data/environment/{}.json"
 
@@ -19,7 +19,7 @@ class TestData:
         print(f"Running tests on env: {env}")
         TestData.env = env
 
-        path = Path(__file__).absolute().parent.parent / CONFIG_PATH.format(env)
+        path = Path(__file__).absolute().parent.parent.parent / CONFIG_PATH.format(env)
         try:
             with open(path) as config_file:
                 config_data = json.load(config_file)

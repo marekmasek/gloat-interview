@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from config.test_data import TestData
+from src.config.test_data import TestData
 
 
 class SeleniumConfig:

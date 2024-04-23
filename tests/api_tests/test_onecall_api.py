@@ -2,10 +2,10 @@ from datetime import timedelta
 
 import allure
 
-from api.geocoding_api import GeocodingApi
-from api.onecall_api import OneCallApi
+from src.api.geocoding_api import GeocodingApi
+from src.api.onecall_api import OneCallApi
+from src.utils.date_time_utils import DateTimeUtils
 from tests.api_tests.test_base_api import TestBaseApi
-from utils.date_time_utils import DateTimeUtils
 
 
 @allure.suite("OneCall API")

@@ -1,7 +1,7 @@
 import allure
 
-from enums.conversions import Length
-from pages.length_conv_page import LengthConvPage
+from src.enums.conversions import Length
+from src.pages.length_conv_page import LengthConvPage
 from tests.ui_tests.test_base_ui import TestBaseUi
 
 

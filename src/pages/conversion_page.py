@@ -4,8 +4,8 @@ from typing import Union
 import allure
 from selenium.webdriver.common.by import By
 
-from enums.conversions import Temperature, Length, Weight
-from pages.base_page import BasePage
+from src.enums.conversions import Temperature, Length, Weight
+from src.pages.base_page import BasePage
 
 
 class ConversionPage(BasePage):

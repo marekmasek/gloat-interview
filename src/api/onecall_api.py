@@ -1,7 +1,7 @@
 import allure
 
-from models.onecall_response import OneCallResponse
-from utils.rest_api_utils import HttpMethod, RestApiUtils
+from src.models.onecall_response import OneCallResponse
+from src.utils.rest_api_utils import RestApiUtils, HttpMethod
 
 
 class OneCallApi:

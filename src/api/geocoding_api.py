@@ -1,7 +1,7 @@
 import allure
 
-from models.location_by_zip_response import LocationByZipResponse
-from utils.rest_api_utils import RestApiUtils, HttpMethod
+from src.models.location_by_zip_response import LocationByZipResponse
+from src.utils.rest_api_utils import RestApiUtils, HttpMethod
 
 
 class GeocodingApi:

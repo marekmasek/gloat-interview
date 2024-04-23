@@ -1,9 +1,8 @@
 # Temperature Conversion page
 import allure
-
 from selenium.webdriver.common.by import By
 
-from pages.conversion_page import ConversionPage
+from src.pages.conversion_page import ConversionPage
 
 
 class TempConvPage(ConversionPage):

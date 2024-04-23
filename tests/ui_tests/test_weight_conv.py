@@ -1,7 +1,7 @@
 import allure
 
-from enums.conversions import Weight
-from pages.weight_conv_page import WeightConvPage
+from src.enums.conversions import Weight
+from src.pages.weight_conv_page import WeightConvPage
 from tests.ui_tests.test_base_ui import TestBaseUi
 
 
