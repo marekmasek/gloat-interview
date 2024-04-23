@@ -26,17 +26,19 @@ class TestOneCallApi(TestBaseApi):
         today_temp, tomorrow_temp = None, None
 
         # find today's and tomorrow's max temperature
-        for day in forecast.daily:
-            date_tz = DateTimeUtils.from_timestamp(day.dt, tz_offset_seconds=tz_offset).date()
+        with allure.step("Find today's and tomorrow's max temperature"):
+            for day in forecast.daily:
+                date_tz = DateTimeUtils.from_timestamp(day.dt, tz_offset_seconds=tz_offset).date()
 
-            if date_tz == today_date_tz:
-                today_temp = day.temp.max
-            if date_tz == tomorrow_date_tz:
-                tomorrow_temp = day.temp.max
-            if today_temp is not None and tomorrow_temp is not None:
-                break
+                if date_tz == today_date_tz:
+                    today_temp = day.temp.max
+                if date_tz == tomorrow_date_tz:
+                    tomorrow_temp = day.temp.max
+                if today_temp is not None and tomorrow_temp is not None:
+                    break
 
         # verify
-        assert today_temp is not None and tomorrow_temp is not None, "Temperature data not found for today or tomorrow"
-        assert today_temp * 0.9 <= tomorrow_temp <= today_temp * 1.1, ("Tomorrow's temperature is not within ±10% of "
-                                                                       "today's temperature")
+        with allure.step("Verify temperatures"):
+            assert today_temp is not None and tomorrow_temp is not None, "Temperature data not found for today or tomorrow"
+            assert today_temp * 0.9 <= tomorrow_temp <= today_temp * 1.1, \
+                "Tomorrow's temperature is not within ±10% of ""today's temperature"
