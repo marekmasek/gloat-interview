@@ -2,11 +2,21 @@
 
 ## Overview
 
-todo
+This framework is designed for UI and API testing. It utilizes the following tools:
 
-## Hierarchy
+- Pytest -> test framework
+- Selenium -> UI testing
+- Requests -> library for API testing
+- Pydantic -> json<->model serialization/deserialization
+- Allure -> detailed test reports
 
-```
+## Design
+
+### Hierarchy
+
+This is the project hierarchy with details about each part of it:
+
+```text
 project/
 │
 ├── src/                        # Source code files
@@ -18,10 +28,9 @@ project/
 │   ├── exceptions/             # Custom exceptions
 │   ├── models/                 # Data models for API
 │   ├── pages/                  # Page object models for UI tests
-│   │   └── base_page.py        # Base page object model, contans common elements, functions and an instance of driver is stored here 
-│   ├── utils/                  # Utility functions and helpers
-│   │   └── rest_api_utils.py   # Utility functions for making REST API requests
-│   └── ...
+│   │   └── base_page.py        # Base page object model, contans common elements, functions and driver 
+│   └── utils/                  # Utility functions and helpers
+│       └── rest_api_utils.py   # Utility functions for making REST API requests
 │
 ├── tests/                      # Test files
 │   ├── api_tests/              # API tests
@@ -39,10 +48,46 @@ project/
 ├── pytest.ini                  # Pytest configuration file
 ├── requirements.txt            # Python dependencies
 └── README.md                   # Project documentation
-
 ```
 
-## Installation
+### UI Tests
+
+UI tests follow the Page Object Model (POM), where each webpage has its own page class and every interaction with its
+elements is done on the page class level. This way we get reusable and easily maintainable code.
+
+#### Handling UI Test Failures
+
+In case of UI test failure, the framework automatically captures screenshot, saves it to <i>screenshots</i> folder and
+attaches them to the Allure report as well.
+
+### API Tests
+
+Similar to POM in UI tests, here every service has its own api class and every interaction with that api is done one the
+api class level. This way we get reusable and easily maintainable code. To simplify the calling of API there is
+RestApiUtils class which contains a method for sending requests. Also received json is deserialized to provided model
+class. If the validation of status code fails, you will get the request and response details in the assert message.
+
+### Test data
+
+Test data <i>(apiBaseUrl, apiKey, baseUrl,...)</i> are loaded automatically before running tests.
+
+Test data are saved in the following path split into separate json files by environment:
+
+```
+data/environment/{env}.json
+```
+
+e.g. production test data json path:
+
+```
+data/environment/prod.json
+```
+
+For more details about how to select environment when running tests check this section [Running Tests](#running-tests).
+
+## Setup
+
+### Installation
 
 To install the project and its dependencies, use the following command:
 
@@ -50,10 +95,30 @@ To install the project and its dependencies, use the following command:
 pip install -r requirements.txt
 ```
 
-## Running Tests
+### Running Tests
 
 To run the tests, use the following command:
 
 ```bash
 pip pytest --env=prod
 ```
+
+#### Available Arguments
+
+<b>--env</b> : Set the environment where you want to run tests, Default environment is prod.
+
+### Viewing the Allure Report locally on your machine
+
+To generate report locally on your machine you need to follow these installation instructions:
+https://allurereport.org/docs/gettingstarted-installation/
+
+After running the tests, Allure results are automatically generated and stored to allure-results folder.
+To view the Allure report, follow these steps:
+
+1. Navigate to the root directory of the project in the terminal.
+2. Run the following command to generate the Allure report:
+    ```bash
+    allure serve allure-results
+    ```
+3. The report should be automatically opened in browser.
+

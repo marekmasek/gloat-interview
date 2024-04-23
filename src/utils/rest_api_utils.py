@@ -58,15 +58,15 @@ class RestApiUtils:
 
         # making request
         res = requests.request(method.name, url, headers=headers, params=params, json=json_payload)
-        logging.debug(
-            f"\n\nREQUEST:\nmethod: {method.name}\nurl: {url}\nparams: {params}\nheaders: {headers}" +
-            f"\nbody: {json_payload}" +
-            f"\n\nRESPONSE:\nstatus code:{res.status_code}\nheaders: {res.headers}\nbody: {res.text}\n")
+
+        req_log = f"\n\nREQUEST:\nmethod: {method.name}\nurl: {url}\nparams: {params}\nheaders: {headers}\nbody: {json_payload}"
+        res_log = f"\n\nRESPONSE:\nstatus code:{res.status_code}\nheaders: {res.headers}\nbody: {res.text}\n"
+        logging.debug(req_log + res_log)
 
         # checking expected status code
         if expected_status_code is not None:
             assert res.status_code == expected_status_code, \
-                f"Expected status code {expected_status_code}, but got {res.status_code}"
+                f"Expected status code: '{expected_status_code}', but got: '{res.status_code}' for {req_log}{res_log}"
 
-        # returning response mapped to the provided model
+            # returning response mapped to the provided model
         return model.model_validate(res.json())
