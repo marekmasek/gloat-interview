@@ -89,18 +89,30 @@ For more details about how to select environment when running tests check this s
 
 ### Installation
 
-To install the project and its dependencies, use the following command:
+1. Create virtual env:
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   python3 -m venv venv
+   ```
+
+2. Activate virtual env:
+
+   ```bash
+   source .venv/bin/activate
+   ```
+
+3. Install the project and its dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ### Running Tests
 
 To run the tests, use the following command:
 
 ```bash
-pip pytest --env=prod
+pytest --env=prod
 ```
 
 #### Available Arguments
