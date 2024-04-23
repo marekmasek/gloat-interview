@@ -1,0 +1,44 @@
+# Python bytecode
+__pycache__/
+
+# Test reports and logs
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+*.pytest_cache/
+*.coverage
+.coverage
+htmlcov/
+.tox/
+.cache/
+.pytest_cache/
+.pytest_history
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# Dependency directories
+lib/
+lib64/
+parts/
+bin/
+var/
+sdist/
+local/
+build/
+dist/
+eggs/
+node_modules/
+
+# IDE temporary files and folders
+.idea/
+.vscode/
+
+# Test artifacts
+screenshots/
+allure-reports/
