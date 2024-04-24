@@ -98,7 +98,7 @@ For more details about how to select environment when running tests check this s
 2. Activate virtual env:
 
    ```bash
-   source .venv/bin/activate
+   source venv/bin/activate
    ```
 
 3. Install the project and its dependencies:

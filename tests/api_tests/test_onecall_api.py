@@ -14,7 +14,6 @@ class TestOneCallApi(TestBaseApi):
 
     @allure.title("Test Tomorrow's Temperature Within 10% of Today's")
     def test_tomorrows_temp_within_10_percent_of_today(self):
-        # get location coordinates and forecast data
         location = GeocodingApi().get_coordinates_by_zip("20852", "US")
         forecast = OneCallApi().get_forecast(location.lon, location.lat)
 
@@ -25,7 +24,6 @@ class TestOneCallApi(TestBaseApi):
 
         today_temp, tomorrow_temp = None, None
 
-        # find today's and tomorrow's max temperature
         with allure.step("Find today's and tomorrow's max temperature"):
             for day in forecast.daily:
                 date_tz = DateTimeUtils.from_timestamp(day.dt, tz_offset_seconds=tz_offset).date()
@@ -37,8 +35,8 @@ class TestOneCallApi(TestBaseApi):
                 if today_temp is not None and tomorrow_temp is not None:
                     break
 
-        # verify
-        with allure.step("Verify temperatures"):
-            assert today_temp is not None and tomorrow_temp is not None, "Temperature data not found for today or tomorrow"
+        with allure.step(f"Verify temperatures, today_temp: '{today_temp}', tomorrow_temp: '{tomorrow_temp}'"):
+            assert today_temp is not None and tomorrow_temp is not None, \
+                "Temperature data not found for today or tomorrow"
             assert today_temp * 0.9 <= tomorrow_temp <= today_temp * 1.1, \
-                "Tomorrow's temperature is not within ±10% of ""today's temperature"
+                "Tomorrow's temperature is not within ±10% of today's temperature"
